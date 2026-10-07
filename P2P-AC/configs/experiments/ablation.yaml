@@ -1,0 +1,19 @@
+name: ablation
+description: >
+  Q4 (Sec. VI-G, Table III): components of P2P-SAC. The full P2P-SAC row is main.yaml/p2p-sac.
+    no_planner_phase   -- the policy acts from t = 0 (no behaviour substitution); imitation and schedule unchanged
+    no_imitation       -- kappa_0 = 0 (planner phase only)
+    action_imitation   -- imitation loss on the deterministic action instead of the logit (Eq. (19))
+    single_buffer      -- one FIFO buffer of the same total capacity C instead of (D_P, D_O)
+    immediate_removal  -- T_d = 0
+paper: ["Table III"]
+include: [_isaac_common.yaml]
+common:
+  experiment: ablation
+seeds: [0, 1, 2, 3, 4]
+runs:
+  - {method: p2p, algo: sac, variant: no_planner_phase, execute_planner: false}
+  - {method: p2p, algo: sac, variant: no_imitation, kappa0: 0.0}
+  - {method: p2p, algo: sac, variant: action_imitation, imitation_space: action}
+  - {method: p2p, algo: sac, variant: single_buffer, buffer: single}
+  - {method: p2p, algo: sac, variant: immediate_removal, t_d: 0}

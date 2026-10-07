@@ -1,0 +1,77 @@
+{
+  "description": "NVIDIA Isaac Sim 5.1 assets loaded by the Go2 navigation task (scripts/setup/isaac_assets.py)",
+  "base_url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1",
+  "roots": [
+    "Isaac/IsaacLab/Robots/Unitree/Go2/go2.usd",
+    "Isaac/Environments/Grid/default_environment.usd",
+    "Isaac/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr",
+    "Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl",
+    "Isaac/Props/UIElements/arrow_x.usd"
+  ],
+  "files": [
+    {
+      "path": "Isaac/Environments/Grid/Materials/Textures/WireframeBlur_basecolor.png",
+      "bytes": 436257,
+      "sha256": "deab39088eaf39ed7be951966c5e6bd5e58b90ab64743b0cdc8e5579fd5a99d9"
+    },
+    {
+      "path": "Isaac/Environments/Grid/Materials/Textures/WireframeBlur_blue.png",
+      "bytes": 1474958,
+      "sha256": "44fc0e82007bb0bd94631cd7ec45986a71ed74b9413899fbffac13efe151be4b"
+    },
+    {
+      "path": "Isaac/Environments/Grid/Materials/Textures/Wireframe_blue.png",
+      "bytes": 111895,
+      "sha256": "940b96ee8c8e53bd1acbc770d4ca0ac98bed9c96439ab386d1b27dbc9790cc4e"
+    },
+    {
+      "path": "Isaac/Environments/Grid/default_environment.usd",
+      "bytes": 13622,
+      "sha256": "8a21c317d638d33a4e6c20c958a7ed8f4d8c5195efd7e20f1b85178b4a15638a"
+    },
+    {
+      "path": "Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl",
+      "bytes": 2000,
+      "sha256": "7f326c41515d7676550d323ab4b495d216571f8efe7e6e1f5019384c8db6f4cd"
+    },
+    {
+      "path": "Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned001_COL_8K.jpg",
+      "bytes": 935107,
+      "sha256": "38b53f7e407016bad8ebb2c90f6d532bda14156f762f311c3b270c3faf7a0ef1"
+    },
+    {
+      "path": "Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned001_GLOSS_8K.jpg",
+      "bytes": 653707,
+      "sha256": "9cf6eb03faa9719699c8d25c6acf96c1a22728233e5a011fe928f3af71af851d"
+    },
+    {
+      "path": "Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned001_NRM_8K.png",
+      "bytes": 3842435,
+      "sha256": "f8726eb8ec7145cbe2e111343f91a22332de42d64d37e5661634fcc7ed925f0e"
+    },
+    {
+      "path": "Isaac/IsaacLab/Robots/Unitree/Go2/Props/instanceable_meshes.usd",
+      "bytes": 18802187,
+      "sha256": "2902646d0f4c13c9ecae3ac9046e32c7d18902eef9679de9829f642a15c93fb5"
+    },
+    {
+      "path": "Isaac/IsaacLab/Robots/Unitree/Go2/go2.usd",
+      "bytes": 8142,
+      "sha256": "ba171c972b987d8c8fb7157ccad2ba9c0c1fed105755d2d8af46bef96cc11c6d"
+    },
+    {
+      "path": "Isaac/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr",
+      "bytes": 18429221,
+      "sha256": "1f92cbf17e46659ff37c9770d065280da226896b0f56091c4c1fca071da7fbeb"
+    },
+    {
+      "path": "Isaac/Props/UIElements/arrow_x.usd",
+      "bytes": 5377,
+      "sha256": "d321116a8fecfef657ac95a5392115b2bfbe7d5eeae2a74556a7037f15259132"
+    }
+  ],
+  "not_downloaded": {
+    "Isaac/Environments/Grid/OmniPBR.mdl": "HTTP 404 (not on the asset server: a built-in Isaac Sim resource)",
+    "Isaac/IsaacLab/Robots/Unitree/Go2/Props/OmniPBR.mdl": "HTTP 404 (not on the asset server: a built-in Isaac Sim resource)"
+  }
+}

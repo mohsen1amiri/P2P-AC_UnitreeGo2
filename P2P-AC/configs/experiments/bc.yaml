@@ -1,0 +1,16 @@
+name: bc
+description: >
+  Behaviour-cloning baseline (Sec. VI-B, Table II): regress the planner actions of the planner phase of the
+  P2P-SAC run with the same seed (artifacts/planner_buffer.npz of main/p2p-sac/seed_<k>) and evaluate the
+  resulting policy without RL. Run after main.yaml has passed T_p for every seed.
+paper: ["Table II"]
+include: [_isaac_common.yaml]
+common:
+  experiment: main
+  bc_epochs: 50
+seeds: [0, 1, 2, 3, 4]
+runs:
+  - {method: bc, bc_data: "{output_root}/main/p2p-sac/seed_{seed}"}
+slurm:
+  runs_per_job: 5
+  time: "0-12:00:00"

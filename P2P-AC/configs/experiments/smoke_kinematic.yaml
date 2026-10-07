@@ -1,0 +1,42 @@
+name: smoke_kinematic
+description: >
+  Pipeline validation on the kinematic backend (NOT a paper experiment): every method of the paper for a few
+  thousand steps, then `python -m p2pac.analysis.aggregate --spec configs/analysis/smoke_kinematic.yaml`.
+  Runs on a laptop in a few minutes; use it before launching anything on the cluster.
+paper: []
+common:
+  experiment: smoke
+  backend: kinematic
+  output_root: runs_smoke
+  total_steps: 4000
+  t_p: 1000
+  t_d: 500
+  eval_every: 1000
+  eval_episodes: 3
+  eval_final_episodes: 5
+  max_episode_steps: 1500
+  checkpoint_every: 1000
+  learner_log_every: 200
+  planner_buffer_capacity: 2000
+  buffer_size: 20000
+  batch_size: 64
+  net_arch: [64, 64]
+seeds: [0, 1]
+runs:
+  - {method: base, algo: ddpg}
+  - {method: p2p, algo: ddpg}
+  - {method: base, algo: td3}
+  - {method: p2p, algo: td3}
+  - {method: base, algo: sac}
+  - {method: p2p, algo: sac}
+  - {method: accel, algo: sac}
+  - {method: base, algo: ppo, ppo_n_steps: 512}
+  - {method: planner, variant: budget_20}
+  - {method: p2p, algo: sac, variant: no_planner_phase, execute_planner: false}
+  - {method: p2p, algo: sac, variant: no_imitation, kappa0: 0.0}
+  - {method: p2p, algo: sac, variant: action_imitation, imitation_space: action}
+  - {method: p2p, algo: sac, variant: single_buffer, buffer: single}
+  - {method: p2p, algo: sac, variant: immediate_removal, t_d: 0}
+slurm:
+  runs_per_job: 4
+  time: "0-02:00:00"

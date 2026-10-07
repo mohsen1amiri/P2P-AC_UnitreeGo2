@@ -1,0 +1,22 @@
+name: planner_reference
+description: >
+  The planner acting alone (reference row of Table II, Remark 1) at every computation budget of the budget
+  study. Each run evaluates the planner on the final evaluation start set (200 episodes, drawn from rho_0) and
+  provides q-hat and K-hat of Assumption 2 and the measured time per query (ms) used as the x-axis of Fig. 3.
+paper: ["Table II (planner row)", "Fig. 3", "Assumption 2"]
+include: [_isaac_common.yaml]
+common:
+  experiment: planner_reference
+  eval_final_episodes: 200
+seeds: [0]
+runs:
+  - {method: planner, variant: budget_1, reap_iterations: 1}
+  - {method: planner, variant: budget_2, reap_iterations: 2}
+  - {method: planner, variant: budget_5, reap_iterations: 5}
+  - {method: planner, variant: budget_10, reap_iterations: 10}
+  - {method: planner, variant: budget_20, reap_iterations: 20}
+  - {method: planner, variant: budget_50, reap_iterations: 50}
+  - {method: planner, variant: budget_100, reap_iterations: 100}
+slurm:
+  runs_per_job: 4
+  time: "1-00:00:00"

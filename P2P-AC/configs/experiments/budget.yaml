@@ -1,0 +1,16 @@
+name: budget
+description: >
+  Q2 (Sec. VI-E, Fig. 3): effect of the planner's computation budget (number of primal-dual iterations per query)
+  on the environment steps N80 needed by P2P-SAC. The default budget (20 iterations) is the main.yaml P2P-SAC run
+  and is not repeated here. The matching planner-only runs are in planner_reference.yaml.
+paper: ["Fig. 3"]
+include: [_isaac_common.yaml]
+common:
+  experiment: budget
+seeds: [0, 1, 2, 3, 4]
+runs:
+  - {method: p2p, algo: sac, variant: budget_2, reap_iterations: 2}
+  - {method: p2p, algo: sac, variant: budget_5, reap_iterations: 5}
+  - {method: p2p, algo: sac, variant: budget_10, reap_iterations: 10}
+  - {method: p2p, algo: sac, variant: budget_50, reap_iterations: 50}
+  - {method: p2p, algo: sac, variant: budget_100, reap_iterations: 100}

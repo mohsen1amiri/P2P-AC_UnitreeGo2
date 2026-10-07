@@ -1,0 +1,12 @@
+# CPU environment for tests, the kinematic backend and the analysis (no Isaac Sim). Python 3.11 recommended
+# (Isaac Sim 5.1 ships Python 3.11). Tested with: torch 2.7.0, numpy 1.26.4, scipy 1.17.1, pandas 2.3.
+torch==2.7.0
+stable-baselines3==2.7.1
+gymnasium==1.2.0
+numpy<2
+scipy
+pandas
+pyyaml
+pytest
+matplotlib
+tensorboard

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv*/
+
+# Experiment outputs (large; archive them separately, e.g. on Zenodo)
+/runs/
+/runs_smoke/
+/sweeps/
+/paper_results/
+/results_smoke/
+/hardware/
+
+# Created on the HPC or too large for GitHub (recreate with scripts/setup/*.sh)
+/scripts/cluster.env
+/.pipbase/
+/.isaac_cache/
+/.apptainer_cache/
+/container/*.sif
+*.sif
+
+.DS_Store

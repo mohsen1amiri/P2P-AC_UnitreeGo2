@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper."
+title: "P2P-AC: Planner-to-Policy Actor-Critic Reinforcement Learning via Anytime-Feasible MPC"
+version: 1.0.0
+type: software
+authors:
+  - family-names: Amiri
+    given-names: Mohsen
+    affiliation: "Stockholm University"
+  - family-names: Amiri
+    given-names: Mohsen
+    affiliation: "Washington State University"
+  - family-names: Beikmohammadi
+    given-names: Ali
+  - family-names: Magnússon
+    given-names: Sindri
+  - family-names: Hosseinzadeh
+    given-names: Mehdi
+# repository-code: "https://github.com/<user>/<repository>"   (add the GitHub address once the repository is public)
+license: MIT

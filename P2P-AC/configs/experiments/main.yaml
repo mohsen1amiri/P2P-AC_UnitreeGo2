@@ -1,0 +1,19 @@
+name: main
+description: >
+  Q1 (Sec. VI-D): P2P-AC applied to DDPG, TD3 and SAC versus the same algorithms without planner, Accelerated SAC
+  and PPO. Produces the learning curves of Fig. 2 and the rows of Table II (except BC and the planner reference,
+  see bc.yaml and planner_reference.yaml). Also the source of the planner buffers D_P used by the BC baseline.
+paper: ["Fig. 2", "Table II"]
+include: [_isaac_common.yaml]
+common:
+  experiment: main
+seeds: [0, 1, 2, 3, 4]
+runs:
+  - {method: base, algo: ddpg}
+  - {method: p2p, algo: ddpg}
+  - {method: base, algo: td3}
+  - {method: p2p, algo: td3}
+  - {method: base, algo: sac}
+  - {method: p2p, algo: sac}
+  - {method: accel, algo: sac}
+  - {method: base, algo: ppo}

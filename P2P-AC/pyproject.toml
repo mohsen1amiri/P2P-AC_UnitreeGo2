@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p2pac"
+version = "1.0.0"
+description = "P2P-AC: Planner-to-Policy Actor-Critic reinforcement learning via an anytime-feasible MPC planner"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "Mohsen Amiri" },
+  { name = "Mohsen Amiri" },
+  { name = "Ali Beikmohammadi" },
+  { name = "Sindri Magnússon" },
+  { name = "Mehdi Hosseinzadeh" },
+]
+# Inside the Isaac Sim container nothing needs to be installed with this file: torch/numpy come from the container
+# and the extra packages from requirements/isaac-overlay.txt (scripts/setup/install_overlay.sh).
+# On a laptop: pip install -r requirements/dev.txt && pip install -e . --no-deps
+dependencies = [
+  "numpy",
+  "scipy",
+  "torch",
+  "gymnasium==1.2.0",
+  "stable-baselines3==2.7.1",
+  "pandas",
+  "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "matplotlib", "tensorboard"]
+hardware = ["unitree_sdk2py"]
+
+[tool.setuptools.packages.find]
+include = ["p2pac*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["third_party", "runs", "runs_smoke", "assets"]
+addopts = "-q"

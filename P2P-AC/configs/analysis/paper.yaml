@@ -1,0 +1,61 @@
+# Which runs feed which figure, table and number of the paper.
+#
+#   python -m p2pac.analysis.aggregate --spec configs/analysis/paper.yaml --runs runs --out paper_results
+#
+# Every entry names an experiment (first folder level under runs/) and a run name (second level), and uses all
+# completed seeds found there. The outputs in paper_results/ are:
+#   curves/data_<name>.csv   Fig. 2 curves, in the format the manuscript's \succcurve macro reads
+#   tables/<table>.csv       Table II / III as numbers; tables/<table>_rows.tex the LaTeX rows to \input
+#   budget_sweep.csv         Fig. 3 (columns tcpu [ms], n80_mean, n80_std [million steps], plus q_hat, K_hat)
+#   numbers.tex              \res{<key>} macros for numbers quoted in the text
+#   provenance.json          the exact run folders, seeds and configuration fingerprints behind each artefact
+# Copy curves/*.csv and budget_sweep.csv to the manuscript's results/ folder.
+runs_root: runs
+total_steps: 5000000
+n80_threshold: 0.8
+curve_grid_step: 100000
+band: std                      # shaded band of Fig. 2: "std" (caption: one standard deviation) or "ci95"
+
+curves:                        # Fig. 2 (file names expected by the \succcurve macros of the manuscript)
+  - {file: data_ddpg.csv,     experiment: main, run: base-ddpg}
+  - {file: data_p2pddpg.csv,  experiment: main, run: p2p-ddpg}
+  - {file: data_td3.csv,      experiment: main, run: base-td3}
+  - {file: data_p2ptd3.csv,   experiment: main, run: p2p-td3}
+  - {file: data_sac.csv,      experiment: main, run: base-sac}
+  - {file: data_p2psac.csv,   experiment: main, run: p2p-sac}
+  - {file: data_accelsac.csv, experiment: main, run: accel-sac}
+  - {file: data_ppo.csv,      experiment: main, run: base-ppo}
+
+tables:
+  table2_main:                 # Table II
+    columns: [n80, success, crash, path_ratio, duration_s, speed]
+    rows:
+      - {label: "DDPG",                 experiment: main, run: base-ddpg}
+      - {label: "P2P-DDPG",             experiment: main, run: p2p-ddpg}
+      - {label: "TD3",                  experiment: main, run: base-td3}
+      - {label: "P2P-TD3",              experiment: main, run: p2p-td3}
+      - {label: "SAC",                  experiment: main, run: base-sac}
+      - {label: "P2P-SAC",              experiment: main, run: p2p-sac}
+      - {label: "Accel.\\ SAC~\\cite{beikmohammadi2024accelerating}", experiment: main, run: accel-sac}
+      - {label: "PPO~\\cite{schulman2017proximal}", experiment: main, run: base-ppo}
+      - {label: "Behavior cloning",     experiment: main, run: bc, no_n80: true}
+      - {label: "Planner (reference)",  experiment: planner_reference, run: planner__budget_20, reference: true}
+  table3_ablation:             # Table III
+    columns: [n80, success]
+    rows:
+      - {label: "P2P-SAC",                                  experiment: main,     run: p2p-sac}
+      - {label: "Without planner phase",                    experiment: ablation, run: p2p-sac__no_planner_phase}
+      - {label: "Without imitation term ($\\kappa_0=0$)",   experiment: ablation, run: p2p-sac__no_imitation}
+      - {label: "Imitation on actions",                     experiment: ablation, run: p2p-sac__action_imitation}
+      - {label: "Single buffer",                            experiment: ablation, run: p2p-sac__single_buffer}
+      - {label: "Immediate removal ($T_d=0$)",              experiment: ablation, run: p2p-sac__immediate_removal}
+
+budget_sweep:                  # Fig. 3 (columns tcpu [ms], n80_mean, n80_std [1e6 steps] + q_hat, K_hat)
+  planner_experiment: planner_reference
+  points:
+    - {iterations: 2,   experiment: budget, run: p2p-sac__budget_2,   planner_run: planner__budget_2}
+    - {iterations: 5,   experiment: budget, run: p2p-sac__budget_5,   planner_run: planner__budget_5}
+    - {iterations: 10,  experiment: budget, run: p2p-sac__budget_10,  planner_run: planner__budget_10}
+    - {iterations: 20,  experiment: main,   run: p2p-sac,             planner_run: planner__budget_20}
+    - {iterations: 50,  experiment: budget, run: p2p-sac__budget_50,  planner_run: planner__budget_50}
+    - {iterations: 100, experiment: budget, run: p2p-sac__budget_100, planner_run: planner__budget_100}
