@@ -29,11 +29,29 @@ else
 fi
 echo "Checking the installation ..."
 p2pac_run python - <<'PY'
-import importlib, importlib.metadata as md
-for mod, dist in [("stable_baselines3", "stable-baselines3"), ("gymnasium", "gymnasium"), ("rsl_rl", "rsl-rl-lib"),
-                  ("tensordict", "tensordict"), ("pandas", "pandas"), ("yaml", None), ("scipy", None),
-                  ("isaaclab", None), ("isaaclab_tasks", None), ("isaaclab_rl", None), ("p2pac", None)]:
-    importlib.import_module(mod)
-    print(f"  ok  {mod:20s} {md.version(dist) if dist else ''}")
+import importlib
+import importlib.metadata as md
+from isaaclab.app import AppLauncher
+
+app = AppLauncher(headless=True).app
+
+try:
+    for mod, dist in [
+        ("stable_baselines3", "stable-baselines3"),
+        ("gymnasium", "gymnasium"),
+        ("rsl_rl", "rsl-rl-lib"),
+        ("tensordict", "tensordict"),
+        ("pandas", "pandas"),
+        ("yaml", None),
+        ("scipy", None),
+        ("isaaclab", None),
+        ("isaaclab_tasks", None),
+        ("isaaclab_rl", None),
+        ("p2pac", None),
+    ]:
+        importlib.import_module(mod)
+        print(f"  ok  {mod:20s} {md.version(dist) if dist else ''}")
+finally:
+    app.close()
 PY
 echo "Overlay installed in $P2PAC_PIPBASE ($P2PAC_ARCH)"
