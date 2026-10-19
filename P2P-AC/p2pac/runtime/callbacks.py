@@ -11,9 +11,8 @@ Timing (Stable-Baselines3 2.7.1):
   1. flush learner statistics (every ``learner_log_every`` updates);
   2. phase events: at ``t = T_p`` the planner buffer ``D_P`` is exported and checkpointed (milestone), at
      ``t = T_r`` the removal of the planner is verified and logged (Proposition 3);
-  3. periodic evaluation (every ``eval_every`` steps). Off-policy learners are evaluated at the next episode
-     boundary (no training episode is cut); PPO, whose rollouts span episodes, is evaluated at the rollout
-     boundary and the training episode in progress is aborted (logged as an event);
+  3. periodic evaluation (every ``eval_every`` steps): inline mode evaluates at rollout/episode boundaries;
+     snapshot mode only saves the frozen policy, leaving the training environment untouched;
   4. periodic checkpoint, and checkpoint + stop when a preemption signal was received.
 """
 
@@ -201,8 +200,11 @@ class RunCallback(BaseCallback):
         t = int(self.model.num_timesteps)
         self._flush_learner(t)
         self._phase_events(t)
-        if t >= self.state["next_eval"] and (self._at_boundary or self.is_on_policy):
-            self.evaluate(t, scheduled=self.state["next_eval"])
+        if t >= self.state["next_eval"] and (self.cfg.eval_mode == "snapshot" or self._at_boundary or self.is_on_policy):
+            if self.cfg.eval_mode == "snapshot":
+                self.save_evaluation_snapshot(t, scheduled=self.state["next_eval"])
+            else:
+                self.evaluate(t, scheduled=self.state["next_eval"])
             while self.state["next_eval"] <= t:
                 self.state["next_eval"] += self.cfg.eval_every
         if self._stop_requested:
@@ -273,6 +275,14 @@ class RunCallback(BaseCallback):
                 self.save_checkpoint(t, milestone=True, tag="T_r")
 
     # ------------------------------------------------------------------------------------------
+    def save_evaluation_snapshot(self, t: int, scheduled: Optional[int] = None) -> str:
+        """Save only policy weights; never step/reset or replace the training environment."""
+        snapshot = os.path.join("policies", f"policy_step_{t:010d}.zip")
+        self.model.save(self.run.path(snapshot))
+        self.run.event("policy_snapshot", step=t, scheduled=scheduled, path=snapshot)
+        self.state["last_eval_t"] = t
+        return snapshot
+
     def evaluate(self, t: int, scheduled: Optional[int] = None) -> dict:
         """Evaluation round on the training environment (the policy acts alone, fixed starts)."""
         env = self.training_env.envs[0].unwrapped

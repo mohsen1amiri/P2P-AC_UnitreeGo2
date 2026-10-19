@@ -90,8 +90,8 @@ The column **Paper** says where the paper states the value. An empty cell means 
 | `--reap-omega` | 200 |  | Parameter omega of the modified barrier function (Eq. 13); must be larger than beta. Symbol: omega. |
 | `--reap-step` | 1 |  | Step size of the primal update (with backtracking, see docs/planner_validation.md). |
 | `--reap-dual-step` | 0.05 |  | Step size of the dual (multiplier) update. |
-| `--reap-iterations` | 20 |  | Computation budget: iterations of the primal-dual flow per planner query. Symbol: t_cpu. |
-| `--reap-time-budget-ms` | – |  | Optional extra wall-clock cap (ms) per query. Off by default because it makes runs machine dependent. |
+| `--reap-iterations` | 20 |  | Iteration budget when --reap-time-budget-ms is not set. Symbol: t_cpu. |
+| `--reap-time-budget-ms` | – |  | When set, run REAP until this wall-clock budget (ms) per query, instead of limiting it to --reap-iterations. Actual time and iteration count are logged. |
 | `--reap-init` | `cold` |  | Initial point of each query. cold: u = 0 (Assumption 1). warm: the shifted previous solution when it is feasible. Choices: `cold`, `warm`. |
 | `--reap-lambda-init` | 0.01 |  | Initial value of every dual variable. |
 | `--reap-armijo` / `--no-reap-armijo` | on |  | Require a sufficient decrease of the barrier function in the primal step. |

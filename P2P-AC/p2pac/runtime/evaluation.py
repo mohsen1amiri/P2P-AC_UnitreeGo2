@@ -24,7 +24,7 @@ EPISODE_FIELDS = [
     "round", "t", "eval_episode", "start_x", "start_y", "outcome", "outcome_name", "success", "crash", "timeout",
     "steps", "return", "discounted_return", "path_length", "path_ratio", "duration_s", "mean_speed",
     "mean_command_speed", "min_clearance", "final_distance", "max_abs_action", "max_abs_yaw_drift",
-    "internal_resets", "planner_ms_mean", "planner_max_constraint", "planner_outside_domain_frac",
+    "internal_resets", "planner_ms_mean", "planner_iterations_mean", "planner_max_constraint", "planner_outside_domain_frac",
 ]
 SUMMARY_FIELDS = [
     "round", "t", "t_scheduled", "n_episodes", "success_rate", "crash_rate", "timeout_rate", "return_mean",
@@ -63,16 +63,18 @@ class PlannerController:
         self.planner = planner
         self.action_map = action_map
         self._ms: list[float] = []
+        self._iters: list[int] = []
         self._cmax: list[float] = []
         self._outside: list[int] = []
 
     def reset(self) -> None:
         self.planner.reset()
-        self._ms, self._cmax, self._outside = [], [], []
+        self._ms, self._iters, self._cmax, self._outside = [], [], [], []
 
     def act(self, obs: np.ndarray) -> np.ndarray:
         out = self.planner.plan(np.asarray(obs[:2], dtype=np.float64))
         self._ms.append(1e3 * out.wall_time_s)
+        self._iters.append(out.iterations)
         self._cmax.append(out.max_constraint)
         self._outside.append(int(out.outside_domain))
         u, _ = self.action_map(out)
@@ -84,6 +86,7 @@ class PlannerController:
         inside = [c for c, o in zip(self._cmax, self._outside) if not o]
         return {
             "planner_ms_mean": float(np.mean(self._ms)),
+            "planner_iterations_mean": float(np.mean(self._iters)),
             "planner_max_constraint": float(np.max(inside)) if inside else math.nan,
             "planner_outside_domain_frac": float(np.mean(self._outside)),
         }

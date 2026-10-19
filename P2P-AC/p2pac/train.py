@@ -266,11 +266,18 @@ def run_learning(cfg, run: RunDir, resume_ckpt: Optional[str]) -> int:
             return EXIT_PREEMPTED
         callback.save_checkpoint(t, milestone=True, tag="final")
         model.save(run.path("final_model.zip"))
-        # final evaluation round on the periodic start set (for the learning curve) + large final evaluation
-        if callback.state.get("last_eval_t") != t:
-            callback.evaluate(t, scheduled=t)
-        summ = final_evaluation(run, env, PolicyController(model), task, cfg, t)
-        run.update_status(state=STATUS_COMPLETED, step=t, finished_utc=utcnow(), final_success_rate=summ["success_rate"])
+        if cfg.eval_mode == "snapshot":
+            # A separate Isaac Sim process evaluates the snapshots; do not touch the training environment.
+            if callback.state.get("last_eval_t") != t:
+                callback.save_evaluation_snapshot(t, scheduled=t)
+            run.event("evaluation_pending", step=t)
+            run.update_status(state=STATUS_COMPLETED, step=t, finished_utc=utcnow())
+        else:
+            # Legacy in-process periodic and final evaluations.
+            if callback.state.get("last_eval_t") != t:
+                callback.evaluate(t, scheduled=t)
+            summ = final_evaluation(run, env, PolicyController(model), task, cfg, t)
+            run.update_status(state=STATUS_COMPLETED, step=t, finished_utc=utcnow(), final_success_rate=summ["success_rate"])
         return 0
     finally:
         callback.close()

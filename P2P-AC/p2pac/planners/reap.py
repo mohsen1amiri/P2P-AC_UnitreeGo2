@@ -11,11 +11,12 @@ and returning the first input of the sequence reached after the computation budg
 
 Discretisation and computation budget
 -------------------------------------
-The flow is integrated in discrete time; the computation budget is the number of iterations ``n_it``
-(``iterations``), i.e. the virtual time ``t_cpu = n_it * delta_rho``. An iteration count (instead of a
-wall-clock deadline) makes runs deterministic and machine independent; the measured wall-clock time of
-every query is logged, so the budget can also be reported in milliseconds (Fig. 3). ``time_budget_ms``
-optionally adds a hard wall-clock cap.
+The flow is integrated in discrete time. By default the budget is the number of iterations ``n_it``
+(``iterations``), i.e. the virtual time ``t_cpu = n_it * delta_rho``. When ``time_budget_ms`` is set,
+queries instead run iterations until their wall-clock deadline, regardless of the configured iteration
+count. An explicit ``plan(z, iterations=n)`` override retains the iteration cap (for diagnostics).
+Every query records its actual elapsed time and completed iteration count. Wall-clock deadlines are
+soft: an iteration cannot be interrupted midway, and timing depends on the machine.
 
 One iteration is
   1. primal step  ``u <- u - h_p * grad_u B(u, lam)``   (``step_size``), safeguarded by backtracking (see below);
@@ -64,6 +65,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import asdict, dataclass
+from itertools import count
 from typing import Optional
 
 import numpy as np
@@ -87,7 +89,7 @@ class ReapConfig:
     step_size: float = 1.0            # h_p = zeta * delta_rho (initial primal step, backtracked)
     dual_step_size: Optional[float] = 0.05  # h_d (None -> same as step_size)
     iterations: int = 20              # computation budget n_it (virtual time t_cpu = n_it * delta_rho)
-    time_budget_ms: Optional[float] = None  # optional wall-clock cap (non-deterministic)
+    time_budget_ms: Optional[float] = None  # when set, use a wall-clock budget instead of an iteration count
     init: str = "cold"                # "cold" | "warm"
     obstacle_margin: float = 0.05     # planner inflation beyond the collision radius (tightening of Z)
     wall_margin_extra: float = 0.05   # planner tightening of the walls beyond the task wall margin
@@ -109,6 +111,8 @@ class ReapConfig:
             raise ValueError("lambda_init must be >= 0")
         if self.iterations < 0:
             raise ValueError("iterations must be >= 0")
+        if self.time_budget_ms is not None and (not np.isfinite(self.time_budget_ms) or self.time_budget_ms <= 0):
+            raise ValueError("time_budget_ms must be finite and > 0")
 
 
 def dare_terminal_weight(dt: float, q: float, r: float) -> np.ndarray:
@@ -182,7 +186,7 @@ class ReapPlanner:
 
     # ------------------------------------------------------------------------------------------
     def plan(self, z: np.ndarray, iterations: Optional[int] = None) -> PlannerOutput:
-        """One planner query ``pi_P^{(t_cpu)}(s)`` at ``z = h_z(s)``; ``iterations`` overrides the budget."""
+        """Plan with the configured budget; explicit ``iterations`` retains the iteration cap."""
         cfg = self.cfg
         t0 = time.perf_counter()
         z = np.asarray(z, dtype=np.float64)[:2]
@@ -225,7 +229,8 @@ class ReapPlanner:
             s_ = 1.0 - beta * (c_ + inv_omega)
             return float(u_ @ self.M @ u_ + 2.0 * h_lin @ u_ - lam @ np.log(s_))
 
-        for _ in range(n_it):
+        # With a wall-clock budget, do not stop at cfg.iterations (the default is only 20).
+        for _ in (count() if deadline is not None and iterations is None else range(n_it)):
             if deadline is not None and time.perf_counter() >= deadline:
                 break
             c = H @ u + g
@@ -261,8 +266,10 @@ class ReapPlanner:
 
         self._u_prev, self._lam_prev = u.copy(), lam.copy()
         c_final = H @ u + g_orig
-        wall = time.perf_counter() - t0
         active = np.count_nonzero(lam > 0.0)
+        cost = self.cost(z, u)
+        lam_max = float(np.max(lam)) if lam.size else 0.0
+        wall = time.perf_counter() - t0
         return PlannerOutput(
             u_world=u[:2].copy(),
             iterations=it_done,
@@ -274,8 +281,8 @@ class ReapPlanner:
                 "n_backtracks": n_backtracks,
                 "n_stalls": n_stalls,
                 "n_active": int(active),
-                "cost": self.cost(z, u),
-                "lambda_max": float(np.max(lam)) if lam.size else 0.0,
+                "cost": cost,
+                "lambda_max": lam_max,
                 "warm": int(used_warm),
             },
         )

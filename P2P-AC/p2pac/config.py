@@ -145,10 +145,10 @@ OPTIONS: list[Option] = [
        float, symbol="omega"),
     _O("reap_step", 1.0, "planner", "Step size of the primal update (with backtracking, see docs/planner_validation.md).", float),
     _O("reap_dual_step", 0.05, "planner", "Step size of the dual (multiplier) update.", float),
-    _O("reap_iterations", 20, "planner", "Computation budget: iterations of the primal-dual flow per planner query.", int,
+    _O("reap_iterations", 20, "planner", "Iteration budget when --reap-time-budget-ms is not set.", int,
        symbol="t_cpu"),
-    _O("reap_time_budget_ms", None, "planner", "Optional extra wall-clock cap (ms) per query. Off by default because it makes "
-       "runs machine dependent.", float),
+    _O("reap_time_budget_ms", None, "planner", "When set, run REAP until this wall-clock budget (ms) per query, "
+       "instead of limiting it to --reap-iterations. Actual time and iteration count are logged.", float),
     _O("reap_init", "cold", "planner", "Initial point of each query. cold: u = 0 (Assumption 1). warm: the shifted previous "
        "solution when it is feasible.", str, choices=("cold", "warm")),
     _O("reap_lambda_init", 0.01, "planner", "Initial value of every dual variable.", float),
@@ -223,6 +223,9 @@ OPTIONS: list[Option] = [
 
     # -------------------------------------------------------------------------------------- evaluation
     _O("eval_every", 100_000, "evaluation", "Evaluate the policy every this many environment steps.", int),
+    _O("eval_mode", "inline", "evaluation", "inline: evaluate on the training environment (legacy); "
+       "snapshot: only save the policy and evaluate separately with p2pac.evaluate.", str,
+       choices=("inline", "snapshot")),
     _O("eval_episodes", 20, "evaluation", "Episodes per periodic evaluation (always the same start positions).", int),
     _O("eval_seed", 1_000_003, "evaluation", "Seed of the evaluation start positions (identical for all methods and seeds). "
        "The final evaluation uses eval_seed + 1.", int),
@@ -379,12 +382,16 @@ def validate(c: argparse.Namespace) -> None:
             errors.append("buffer_size (C) must exceed planner_buffer_capacity (C_P)")
     if c.reap_omega <= c.reap_beta:
         errors.append("reap_omega must be larger than reap_beta")
+    if c.reap_time_budget_ms is not None and not (0 < c.reap_time_budget_ms < float("inf")):
+        errors.append("reap_time_budget_ms must be finite and > 0")
     if c.backend == "isaac" and c.num_envs != 1:
         errors.append("the Isaac Go2 backend currently supports num_envs=1")
     if c.method == "bc" and not c.bc_data:
         errors.append("method=bc requires --bc-data")
     if c.eval_every <= 0 or c.eval_episodes <= 0:
         errors.append("eval_every and eval_episodes must be positive")
+    if c.eval_mode == "snapshot" and not c.save_policy_snapshots:
+        errors.append("snapshot evaluation requires --save-policy-snapshots")
     if len(c.obstacles) % 3 != 0:
         errors.append("obstacles must be triplets x y r")
     if errors:

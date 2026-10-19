@@ -210,7 +210,7 @@ The policy is evaluated **alone** (the planner never acts), with its determinist
 
 ### `eval/episodes.csv` and `eval/final_episodes.csv` — one row per evaluation episode
 
-The same columns as `logs/episodes.csv`, plus `round`, `t`, `eval_episode` and, for planner runs, `planner_ms_mean`, `planner_max_constraint` and `planner_outside_domain_frac`.
+The same columns as `logs/episodes.csv`, plus `round`, `t`, `eval_episode` and, for planner runs, `planner_ms_mean`, `planner_iterations_mean`, `planner_max_constraint` and `planner_outside_domain_frac`.
 
 ### `eval/final.json` — final evaluation (Table II)
 

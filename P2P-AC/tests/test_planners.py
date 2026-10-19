@@ -59,6 +59,47 @@ def test_anytime_feasibility_every_budget(iterations):
     assert n_inside >= 30
 
 
+def test_wall_clock_budget_controls_iterations(monkeypatch):
+    """A millisecond budget must not silently stop after cfg.iterations."""
+    from p2pac.planners import reap as reap_module
+
+    ticks = iter(range(100))
+    monkeypatch.setattr(reap_module.time, "perf_counter", lambda: next(ticks) * 0.0001)
+    pl = make_planner("reap", ReapConfig(iterations=1, time_budget_ms=1.0), TASK)
+    out = pl.plan(np.array([0.0, -1.3]))
+    assert out.iterations > 1
+    assert out.wall_time_s > 0.0
+    assert out.max_constraint <= 0.0
+
+
+def test_iteration_override_still_limits_time_budget_mode(monkeypatch):
+    """Explicit iteration counts remain available for planner diagnostics."""
+    from p2pac.planners import reap as reap_module
+
+    ticks = iter(range(100))
+    monkeypatch.setattr(reap_module.time, "perf_counter", lambda: next(ticks) * 0.0001)
+    pl = make_planner("reap", ReapConfig(iterations=1, time_budget_ms=10.0), TASK)
+    assert pl.plan(np.array([0.0, -1.3]), iterations=3).iterations == 3
+
+
+@pytest.mark.parametrize("budget", [0.0, -1.0, float("nan"), float("inf")])
+def test_time_budget_must_be_positive_and_finite(budget):
+    with pytest.raises(ValueError, match="time_budget_ms"):
+        ReapConfig(time_budget_ms=budget)
+
+
+def test_planner_only_episode_logs_completed_iterations():
+    from p2pac.planners import PlannerActionMap
+    from p2pac.runtime.evaluation import PlannerController
+
+    planner = make_planner("reap", ReapConfig(iterations=3), TASK)
+    amap = PlannerActionMap(0.0, [-0.7, -0.7], [0.7, 0.7])
+    controller = PlannerController(planner, amap)
+    controller.reset()
+    controller.act(np.array([0.0, -1.3]))
+    assert controller.episode_diagnostics()["planner_iterations_mean"] == 3.0
+
+
 def test_gap_decreases_with_budget():
     pl = make_planner("reap", ReapConfig(), TASK)
     budgets = [1, 20, 200]
