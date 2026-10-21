@@ -182,7 +182,7 @@ def run_learning(cfg, run: RunDir, resume_ckpt: Optional[str]) -> int:
         from gymnasium.wrappers import RecordVideo
 
         wrapped = RecordVideo(env, video_folder=segment_dir(run, "videos"), disable_logger=True,
-                              step_trigger=lambda s: s % cfg.video_every == 0, video_length=cfg.video_length)
+                              step_trigger=lambda s: s == 1 or s % cfg.video_every == 0, video_length=cfg.video_length)
     sb3_dir = segment_dir(run, os.path.join("logs", "sb3"))
     monitor = Monitor(wrapped, filename=os.path.join(sb3_dir, "monitor.csv"))
     vec = DummyVecEnv([lambda: monitor])
