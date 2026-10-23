@@ -79,8 +79,8 @@ class P2PConfig:
         return self.executes_planner(t) or self.kappa(t) > 0.0
 
     def routes_to_planner_buffer(self, t: int) -> bool:
-        """Transitions of the planner phase (t < T_p) are stored in the protected buffer D_P."""
-        return t < self.t_p
+        """Store transitions in the protected buffer only when REAP executes the action."""
+        return self.executes_planner(t)
 
     @property
     def uses_planner(self) -> bool:
