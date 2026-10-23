@@ -182,8 +182,8 @@ class PlannerReplayBuffer(BaseBuffer):
             raise ValueError("optimize_memory_usage is not supported")
         if not (0 < planner_capacity < buffer_size):
             raise ValueError("need 0 < planner_capacity (C_P) < buffer_size (C)")
-        if not (0.0 < planner_fraction < 1.0):
-            raise ValueError("planner_fraction must be in (0, 1)")
+        if not (0.0 <= planner_fraction < 1.0):
+            raise ValueError("planner_fraction must be in [0, 1)")
         super().__init__(buffer_size, observation_space, action_space, device, n_envs)
         self.optimize_memory_usage = False
         self.handle_timeout_termination = handle_timeout_termination
@@ -232,6 +232,9 @@ class PlannerReplayBuffer(BaseBuffer):
         elif n_o == 0:
             batch = self.planner.sample(batch_size, env)
             k_p = batch_size
+        elif self.planner_fraction == 0.0:
+            batch = self.online.sample(batch_size, env)
+            k_p = 0
         else:
             k_p = int(math.floor(batch_size * self.planner_fraction))
             s_p = self.planner.sample(k_p, env)
