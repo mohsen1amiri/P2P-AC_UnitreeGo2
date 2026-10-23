@@ -80,3 +80,66 @@ def test_logit_gradient_does_not_vanish_at_the_boundary():
     ((th.tanh(xi) - target) ** 2).mean().backward()
     g_action = xi.grad.clone()
     assert th.all(g_logit.abs() > 50 * g_action.abs())
+
+@pytest.mark.parametrize(
+    "fraction, expected_planner",
+    [
+        (0.0, 0),
+        (0.25, 64),
+        (0.50, 128),
+        (0.75, 192),
+    ],
+)
+def test_planner_sampling_fraction_sweep(fraction, expected_planner):
+    buf = PlannerReplayBuffer(
+        1000, OBS, ACT,
+        device="cpu",
+        planner_capacity=100,
+        planner_fraction=fraction,
+    )
+
+    # Before any online transitions exist, use planner data.
+    for t in range(10):
+        _add(buf, t, True)
+
+    initial = buf.sample(256)
+    assert initial.from_planner_buffer.sum().item() == 256
+
+    # Once both buffers contain data, apply the requested fraction.
+    for t in range(10, 20):
+        _add(buf, t, False)
+
+    batch = buf.sample(256)
+
+    assert batch.observations.shape == (256, 4)
+    assert batch.from_planner_buffer.sum().item() == expected_planner
+    assert buf.last_batch_stats["k_planner"] == expected_planner
+
+
+def test_a1_no_planner_execution_uses_online_buffer():
+    cfg = P2PConfig(
+        t_p=100,
+        t_d=50,
+        kappa0=10.0,
+        execute_planner=False,
+    )
+
+    buf = PlannerReplayBuffer(
+        100, OBS, ACT,
+        device="cpu",
+        planner_capacity=20,
+    )
+
+    for t in range(10):
+        assert not cfg.executes_planner(t)
+        assert cfg.queries_planner(t)
+        assert not cfg.routes_to_planner_buffer(t)
+
+        _add(buf, t, cfg.routes_to_planner_buffer(t))
+
+    assert buf.planner.size() == 0
+    assert buf.online.size() == 10
+
+    batch = buf.sample(32)
+    assert batch.from_planner_buffer.sum().item() == 0
+    assert batch.planner_mask.sum().item() == 32
