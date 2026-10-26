@@ -1,0 +1,30 @@
+# Sensitivity study: initial imitation weight kappa_0.
+#
+# Agreed values: 0, 1, 5, 10, 20.
+# Reference: kappa_0 = 10 (already included in main.yaml).
+# kappa_0 = 0 is A2 (already included in ablation.yaml).
+#
+# Three additional settings x five seeds = 15 training runs.
+# Each run trains for 5 million environment interactions.
+
+name: kappa_sweep
+description: >
+  Sensitivity of P2P-SAC to the initial imitation weight.
+  The reference weight 10 is reused from main.yaml.
+  The zero-imitation setting is reused from ablation.yaml (A2).
+
+include: [_isaac_common.yaml]
+
+common:
+  experiment: kappa_sweep
+
+seeds: [0, 1, 2, 3, 4]
+
+runs:
+  - {method: p2p, algo: sac, variant: kappa_1, kappa0: 1.0}
+  - {method: p2p, algo: sac, variant: kappa_5, kappa0: 5.0}
+  - {method: p2p, algo: sac, variant: kappa_20, kappa0: 20.0}
+
+slurm:
+  runs_per_job: 1       # one Isaac Sim training process per allocated GPU
+  stagger_s: 0

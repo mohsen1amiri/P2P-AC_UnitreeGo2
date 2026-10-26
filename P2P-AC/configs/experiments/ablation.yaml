@@ -17,3 +17,9 @@ runs:
   - {method: p2p, algo: sac, variant: action_imitation, imitation_space: action}
   - {method: p2p, algo: sac, variant: single_buffer, buffer: single}
   - {method: p2p, algo: sac, variant: immediate_removal, t_d: 0}
+
+
+# SLURM settings for the ablation experiments.
+slurm:
+  runs_per_job: 1       # one Isaac Sim process per allocated GPU
+  stagger_s: 0

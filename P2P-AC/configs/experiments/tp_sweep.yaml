@@ -1,0 +1,28 @@
+# Sensitivity study: planner execution duration T_p.
+# Reference: T_p = 100000 steps (already included in main.yaml).
+# All other parameters retain the reference P2P-SAC settings.
+#
+# Four additional settings x five seeds = 20 training runs.
+# Each run trains for 5 million environment interactions.
+
+name: tp_sweep
+description: >
+  Sensitivity of P2P-SAC to the duration of direct REAP
+  action execution. The 100k reference is reused from main.yaml.
+
+include: [_isaac_common.yaml]
+
+common:
+  experiment: tp_sweep
+
+seeds: [0, 1, 2, 3, 4]
+
+runs:
+  - {method: p2p, algo: sac, variant: tp_10k, t_p: 10000}
+  - {method: p2p, algo: sac, variant: tp_50k, t_p: 50000}
+  - {method: p2p, algo: sac, variant: tp_300k, t_p: 300000}
+  - {method: p2p, algo: sac, variant: tp_1m, t_p: 1000000}
+
+slurm:
+  runs_per_job: 1       # one Isaac Sim training process per allocated GPU
+  stagger_s: 0

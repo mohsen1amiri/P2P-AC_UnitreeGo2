@@ -1,22 +1,37 @@
+# REAP-only reference evaluations for the computation-budget study.
+#
+# Agreed planner budgets: 1, 5, 10, 15 ms per query.
+# The completed 10 ms reference (100/100 successes) is reused.
+#
+# Evaluate the three additional budgets on 100 fixed starts.
+# These evaluations check teacher performance before launching
+# the corresponding 5-million-step P2P-SAC training runs.
+#
+# Planner evaluations also run through a separate SLURM SBATCH array.
+
 name: planner_reference
 description: >
-  The planner acting alone (reference row of Table II, Remark 1) at every computation budget of the budget
-  study. Each run evaluates the planner on the final evaluation start set (200 episodes, drawn from rho_0) and
-  provides q-hat and K-hat of Assumption 2 and the measured time per query (ms) used as the x-axis of Fig. 3.
+  REAP-only reference evaluations at additional wall-clock
+  computation budgets. The previously validated 10 ms
+  reference is reused rather than repeated.
+
 paper: ["Table II (planner row)", "Fig. 3", "Assumption 2"]
+
 include: [_isaac_common.yaml]
+
 common:
   experiment: planner_reference
-  eval_final_episodes: 200
+  eval_final_episodes: 100
+  eval_seed: 1000004          # Built-in final evaluation uses eval_seed + 1 = 1000005
+
 seeds: [0]
+
 runs:
-  - {method: planner, variant: budget_1, reap_iterations: 1}
-  - {method: planner, variant: budget_2, reap_iterations: 2}
-  - {method: planner, variant: budget_5, reap_iterations: 5}
-  - {method: planner, variant: budget_10, reap_iterations: 10}
-  - {method: planner, variant: budget_20, reap_iterations: 20}
-  - {method: planner, variant: budget_50, reap_iterations: 50}
-  - {method: planner, variant: budget_100, reap_iterations: 100}
+  - {method: planner, variant: budget_1ms, reap_time_budget_ms: 1.0}
+  - {method: planner, variant: budget_5ms, reap_time_budget_ms: 5.0}
+  - {method: planner, variant: budget_15ms, reap_time_budget_ms: 15.0}
+
 slurm:
-  runs_per_job: 4
+  runs_per_job: 1             # One Isaac Sim process per allocated GPU
   time: "1-00:00:00"
+  stagger_s: 0

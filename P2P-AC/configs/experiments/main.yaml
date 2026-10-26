@@ -17,3 +17,10 @@ runs:
   - {method: p2p, algo: sac}
   - {method: accel, algo: sac}
   - {method: base, algo: ppo}
+
+  # SLURM settings for the main experiments.
+# Eight methods x five seeds = 40 training runs.
+# Each run trains for 5 million environment interactions.
+slurm:
+  runs_per_job: 1       # one Isaac Sim process per allocated GPU
+  stagger_s: 0

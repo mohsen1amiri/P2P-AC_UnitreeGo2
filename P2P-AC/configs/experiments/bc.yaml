@@ -12,5 +12,6 @@ seeds: [0, 1, 2, 3, 4]
 runs:
   - {method: bc, bc_data: "{output_root}/main/p2p-sac/seed_{seed}"}
 slurm:
-  runs_per_job: 5
-  time: "0-12:00:00"
+  runs_per_job: 1       # one Isaac Sim process per allocated GPU
+  time: "0-12:00:00"    # wall-time limit; cluster.env can override this
+  stagger_s: 0

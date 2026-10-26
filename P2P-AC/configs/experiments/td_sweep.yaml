@@ -1,0 +1,30 @@
+# Sensitivity study: imitation decay duration T_d.
+#
+# Agreed values: 0, 10000, 50000, 100000, 300000 steps.
+# Reference: T_d = 50000 (already included in main.yaml).
+# T_d = 0 is A5 (already included in ablation.yaml).
+#
+# Three additional settings x five seeds = 15 training runs.
+# Each run trains for 5 million environment interactions.
+
+name: td_sweep
+description: >
+  Sensitivity of P2P-SAC to the imitation decay duration.
+  The 50k reference is reused from main.yaml.
+  The zero-decay setting is reused from ablation.yaml (A5).
+
+include: [_isaac_common.yaml]
+
+common:
+  experiment: td_sweep
+
+seeds: [0, 1, 2, 3, 4]
+
+runs:
+  - {method: p2p, algo: sac, variant: td_10k, t_d: 10000}
+  - {method: p2p, algo: sac, variant: td_100k, t_d: 100000}
+  - {method: p2p, algo: sac, variant: td_300k, t_d: 300000}
+
+slurm:
+  runs_per_job: 1       # one Isaac Sim training process per allocated GPU
+  stagger_s: 0

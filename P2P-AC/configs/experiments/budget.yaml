@@ -1,16 +1,35 @@
+# Sensitivity study: REAP computation budget t_cpu.
+#
+# Agreed values: 1, 5, 10, 15 ms per planner query.
+# Reference: 10 ms (already included in main.yaml).
+#
+# Three additional settings x five seeds = 15 training runs.
+# Each run trains for 5 million environment interactions.
+#
+# REAP uses a soft wall-clock deadline; actual query times
+# and completed iteration counts are recorded.
+
 name: budget
 description: >
-  Q2 (Sec. VI-E, Fig. 3): effect of the planner's computation budget (number of primal-dual iterations per query)
-  on the environment steps N80 needed by P2P-SAC. The default budget (20 iterations) is the main.yaml P2P-SAC run
-  and is not repeated here. The matching planner-only runs are in planner_reference.yaml.
+  Q2 (Sec. VI-E, Fig. 3): effect of the REAP wall-clock
+  computation budget on the environment steps N80 needed
+  by P2P-SAC. The reference 10 ms budget is reused from
+  main.yaml and is not repeated here.
+
 paper: ["Fig. 3"]
+
 include: [_isaac_common.yaml]
+
 common:
   experiment: budget
+
 seeds: [0, 1, 2, 3, 4]
+
 runs:
-  - {method: p2p, algo: sac, variant: budget_2, reap_iterations: 2}
-  - {method: p2p, algo: sac, variant: budget_5, reap_iterations: 5}
-  - {method: p2p, algo: sac, variant: budget_10, reap_iterations: 10}
-  - {method: p2p, algo: sac, variant: budget_50, reap_iterations: 50}
-  - {method: p2p, algo: sac, variant: budget_100, reap_iterations: 100}
+  - {method: p2p, algo: sac, variant: budget_1ms, reap_time_budget_ms: 1.0}
+  - {method: p2p, algo: sac, variant: budget_5ms, reap_time_budget_ms: 5.0}
+  - {method: p2p, algo: sac, variant: budget_15ms, reap_time_budget_ms: 15.0}
+
+slurm:
+  runs_per_job: 1       # one Isaac Sim training process per allocated GPU
+  stagger_s: 0

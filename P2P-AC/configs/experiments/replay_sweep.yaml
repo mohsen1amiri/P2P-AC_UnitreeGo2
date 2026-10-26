@@ -1,0 +1,32 @@
+# Sensitivity study: planner replay sampling fraction f_P.
+#
+# Agreed values: 0, 0.25, 0.50, 0.75.
+# Reference: f_P = 0.50 (already included in main.yaml).
+#
+# Three additional settings x five seeds = 15 training runs.
+# Each run trains for 5 million environment interactions.
+#
+# Only the sampling fraction changes. The protected planner
+# buffer and online FIFO buffer retain their reference capacities.
+
+name: replay_sweep
+description: >
+  Sensitivity of P2P-SAC to the fraction of each minibatch
+  sampled from the protected planner replay buffer.
+  The 0.50 reference is reused from main.yaml.
+
+include: [_isaac_common.yaml]
+
+common:
+  experiment: replay_sweep
+
+seeds: [0, 1, 2, 3, 4]
+
+runs:
+  - {method: p2p, algo: sac, variant: replay_0, planner_batch_fraction: 0.0}
+  - {method: p2p, algo: sac, variant: replay_025, planner_batch_fraction: 0.25}
+  - {method: p2p, algo: sac, variant: replay_075, planner_batch_fraction: 0.75}
+
+slurm:
+  runs_per_job: 1       # one Isaac Sim training process per allocated GPU
+  stagger_s: 0

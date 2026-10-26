@@ -8,12 +8,16 @@ common:
   backend: isaac
   output_root: runs
   total_steps: 5000000          # training budget per run (Fig. 2 x-axis)
-  max_episode_steps: 8000       # T_max (Sec. VI-A)
-  eval_every: 100000            # evaluate the policy every 1e5 environment steps
-  eval_episodes: 20             # episodes per evaluation (fixed start positions)
+  max_episode_steps: 800        # T_max = 800 steps (16 s at 50 Hz)
+  eval_mode: snapshot           # save policies for independent evaluation; do not interrupt training
+  eval_every: 50000             # save a policy snapshot every 5e4 environment steps
+  eval_episodes: 10             # episodes per independent intermediate evaluation (fixed start positions)
   eval_final_episodes: 100      # episodes of the final evaluation (Table II)
-  checkpoint_every: 250000      # resumable checkpoint every 2.5e5 steps
+  reap_time_budget_ms: 10.0     # reference REAP computation budget: 10 ms per query
+  ppo_n_steps: 2000             # PPO rollout length; aligns with 50k evaluations and 5M training steps
+  checkpoint_every: 250000     # resumable checkpoint every 2.5e5 steps
   gamma: 0.99                   # discount factor
+
 slurm:                          # GPU type, account, partition, CPUs, memory: scripts/cluster.env (cluster specific)
   runs_per_job: 3               # three Isaac Sim instances share one GPU
   time: "7-00:00:00"            # wall time per job; P2PAC_SLURM_TIME in scripts/cluster.env overrides it. Runs are
