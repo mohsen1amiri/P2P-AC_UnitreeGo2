@@ -10,7 +10,7 @@ The spec (YAML) declares which runs feed which artefact. Outputs (all machine re
   (``steps_M, suc_mean, suc_lo, suc_hi``) plus std, CI and per-seed columns;
 * ``tables/<table>.csv`` and ``tables/<table>_rows.tex`` -- Table II / III (mean +- std over seeds);
 * ``budget_sweep.csv``        -- Fig. 3 (``tcpu, n80_mean, n80_std`` in ms / 1e6 steps) plus q-hat and K-hat;
-* ``numbers.tex``             -- ``\\res{<key>}`` macros for every number quoted in the text;
+* ``numbers.tex``             -- ``\res{<key>}`` macros for every number quoted in the text;
 * ``provenance.json``         -- the exact run directories, seeds, config hashes and statuses used.
 
 Nothing is silently dropped: missing/unfinished runs are listed in ``provenance.json`` and in the console.
@@ -27,6 +27,7 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
+from p2pac.analysis.archived import load_archived_planner
 from p2pac.analysis.load import Run, discover, select
 from p2pac.analysis.stats import (interpolate_curve, n_to_threshold, summarize_n80, summarize_seeds,
                                   wilson_interval)
@@ -56,9 +57,8 @@ def run_n80(run: Run, threshold: float) -> Optional[float]:
     )
 
 
-def run_final_metrics(run: Run) -> dict:
-    """Final evaluation metrics of one run (efficiency metrics over successful episodes only)."""
-    ep = run.final_episodes()
+def final_metrics_from_episodes(ep: pd.DataFrame) -> dict:
+    """Final evaluation metrics from episode records (success-only efficiency metrics)."""
     if ep.empty:
         return {}
     succ = ep[ep["success"] == 1]
@@ -73,6 +73,10 @@ def run_final_metrics(run: Run) -> dict:
         "planner_ms_mean": float(ep["planner_ms_mean"].mean()) if "planner_ms_mean" in ep and ep["planner_ms_mean"].notna().any() else math.nan,
     }
 
+
+def run_final_metrics(run: Run) -> dict:
+    """Final evaluation metrics of a discovered run."""
+    return final_metrics_from_episodes(run.final_episodes())
 
 # ----------------------------------------------------------------------------------------------------
 # artefacts
@@ -115,15 +119,31 @@ def fmt_pm(mean: float, std: float, digits: int = 2) -> str:
     return f"{mean:.{digits}f} $\\pm$ {std:.{digits}f}"
 
 
-def build_table_rows(spec_rows: list[dict], runs: list[Run], threshold: float, total_steps: int) -> tuple[list[dict], dict]:
+def build_table_rows(spec_rows: list[dict], runs: list[Run], threshold: float, total_steps: int,
+                     archived_references: Optional[dict] = None) -> tuple[list[dict], dict]:
     rows, prov = [], {}
     for row in spec_rows:
-        sel = select(runs, row["experiment"], row["run"])
-        prov[row["label"]] = [{"root": r.root, "seed": r.seed, "config_hash": r.config.get("config_hash"),
-                               "state": r.status.get("state")} for r in sel]
-        out: dict[str, Any] = {"label": row["label"], "experiment": row["experiment"], "run": row["run"], "n_seeds": len(sel)}
-        finals = [run_final_metrics(r) for r in sel]
-        finals = [f for f in finals if f]
+        archive_key = row.get("archived_reference")
+        if archive_key:
+            if not row.get("reference"):
+                raise ValueError("An archived planner row must have reference: true")
+            entry = (archived_references or {})[archive_key]
+            episodes = load_archived_planner(entry)
+            sel = []
+            finals = [final_metrics_from_episodes(episodes)]
+            out: dict[str, Any] = {"label": row["label"], "experiment": "archived_reference",
+                                   "run": archive_key, "n_seeds": 1}
+            prov[row["label"]] = [{"source": "verified_archived_planner_evaluation", "reference_id": archive_key,
+                                   "root": entry["root"], "evaluation_dir": entry["evaluation_dir"],
+                                   "original_run": entry["original_run"], "episodes_sha256": entry["episodes_sha256"],
+                                   "n_episodes": len(episodes), "n_success": int(episodes["success"].sum())}]
+        else:
+            sel = select(runs, row["experiment"], row["run"])
+            prov[row["label"]] = [{"root": r.root, "seed": r.seed, "config_hash": r.config.get("config_hash"),
+                                   "state": r.status.get("state")} for r in sel]
+            out = {"label": row["label"], "experiment": row["experiment"], "run": row["run"], "n_seeds": len(sel)}
+            finals = [run_final_metrics(r) for r in sel]
+            finals = [f for f in finals if f]
         if row.get("reference") or row.get("no_n80"):
             out["n80"] = {}
         else:
@@ -176,7 +196,8 @@ def table_to_frame(rows: list[dict]) -> pd.DataFrame:
     return pd.DataFrame(flat)
 
 
-def build_budget_sweep(spec: dict, runs: list[Run], threshold: float, total_steps: int) -> pd.DataFrame:
+def build_budget_sweep(spec: dict, runs: list[Run], threshold: float, total_steps: int,
+                       archived_references: Optional[dict] = None) -> pd.DataFrame:
     rows = []
     for item in spec["points"]:
         budget_ms = item["budget_ms"]
@@ -184,17 +205,32 @@ def build_budget_sweep(spec: dict, runs: list[Run], threshold: float, total_step
         n80 = summarize_n80([run_n80(r, threshold) for r in learn], total_steps)
         row = {"budget_ms": budget_ms, "n_seeds": len(learn), "n80_mean": n80["mean"] / 1e6, "n80_std": n80["std"] / 1e6,
                "n80_n_reached": n80["n_reached"], "n80_censored": n80["n_censored"]}
-        if item.get("planner_run"):
+        finals = []
+
+        if item.get("archived_reference"):
+            # Historical planner evaluation, validated against its original checksum.
+            entry = (archived_references or {})[item["archived_reference"]]
+            episodes = load_archived_planner(entry)
+            finals = [final_metrics_from_episodes(episodes)]
+
+        elif item.get("planner_run"):
+            # Planner references produced by the current experiments.
             pl = select(runs, item.get("planner_experiment", spec.get("planner_experiment")), item["planner_run"])
             finals = [run_final_metrics(r) for r in pl]
             finals = [f for f in finals if f]
-            if finals:
-                n_s = sum(f["n_success"] for f in finals)
-                n = sum(f["n_episodes"] for f in finals)
-                lo, hi = wilson_interval(n_s, n)
-                row.update({"q_hat": n_s / n, "q_lo": lo, "q_hi": hi, "K_hat_p95": np.nanmean([f["success_steps_p95"] for f in finals]),
-                            "K_hat_max": np.nanmax([f["success_steps_max"] for f in finals]),
-                            "tcpu": np.nanmean([f["planner_ms_mean"] for f in finals])})
+
+        if finals:
+            n_s = sum(f["n_success"] for f in finals)
+            n = sum(f["n_episodes"] for f in finals)
+            lo, hi = wilson_interval(n_s, n)
+            row.update({
+                "q_hat": n_s / n,
+                "q_lo": lo,
+                "q_hi": hi,
+                "K_hat_p95": np.nanmean([f["success_steps_p95"] for f in finals]),
+                "K_hat_max": np.nanmax([f["success_steps_max"] for f in finals]),
+                "tcpu": np.nanmean([f["planner_ms_mean"] for f in finals]),
+            })
         rows.append(row)
     df = pd.DataFrame(rows)
     if "tcpu" not in df:
@@ -246,7 +282,7 @@ def main(argv=None) -> int:
     tdir = os.path.join(args.out, "tables")
     os.makedirs(tdir, exist_ok=True)
     for name, t in spec.get("tables", {}).items():
-        rows, prov = build_table_rows(t["rows"], runs, threshold, total)
+        rows, prov = build_table_rows(t["rows"], runs, threshold, total, spec.get("archived_references", {}))
         table_to_frame(rows).to_csv(os.path.join(tdir, f"{name}.csv"), index=False)
         with open(os.path.join(tdir, f"{name}_rows.tex"), "w") as f:
             f.write(table_to_latex(rows, t["columns"]))
@@ -264,7 +300,10 @@ def main(argv=None) -> int:
 
     # ---- budget sweep (Fig. 3) ----------------------------------------------------------------
     if spec.get("budget_sweep"):
-        df = build_budget_sweep(spec["budget_sweep"], runs, threshold, total)
+        df = build_budget_sweep(
+            spec["budget_sweep"], runs, threshold, total,
+            spec.get("archived_references", {}),
+        )
         df.to_csv(os.path.join(args.out, "budget_sweep.csv"), index=False)
         for _, r in df.iterrows():
             numbers[f"budget/{int(r['budget_ms'])}/n80"] = f"{r['n80_mean']:.2f}" if not math.isnan(r["n80_mean"]) else "--"

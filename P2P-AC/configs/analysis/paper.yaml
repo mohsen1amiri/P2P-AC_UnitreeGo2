@@ -39,7 +39,7 @@ tables:
       - {label: "Accel.\\ SAC~\\cite{beikmohammadi2024accelerating}", experiment: main, run: accel-sac}
       - {label: "PPO~\\cite{schulman2017proximal}", experiment: main, run: base-ppo}
       - {label: "Behavior cloning",     experiment: main, run: bc, no_n80: true}
-      - {label: "Planner (reference)",  experiment: planner_reference, run: planner__budget_20, reference: true}
+      - {label: "Planner (reference)", archived_reference: reap_10ms_100ep, reference: true}
   table3_ablation:             # Table III
     columns: [n80, success]
     rows:
@@ -58,7 +58,7 @@ budget_sweep:                  # Fig. 3: REAP wall-clock computation budget (ms)
 
     # The 10 ms P2P-SAC training reference is reused from main.yaml.
     # Its previously validated REAP-only result must be linked separately.
-    - {budget_ms: 10, experiment: main,   run: p2p-sac}
+    - {budget_ms: 10, experiment: main,   run: p2p-sac, archived_reference: reap_10ms_100ep}
 
     - {budget_ms: 15, experiment: budget, run: p2p-sac__budget_15ms, planner_run: planner__budget_15ms}
 
