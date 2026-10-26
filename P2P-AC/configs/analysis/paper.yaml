@@ -13,7 +13,7 @@
 runs_root: runs
 total_steps: 5000000
 n80_threshold: 0.8
-curve_grid_step: 100000
+curve_grid_step: 50000
 band: std                      # shaded band of Fig. 2: "std" (caption: one standard deviation) or "ci95"
 
 curves:                        # Fig. 2 (file names expected by the \succcurve macros of the manuscript)
@@ -50,12 +50,14 @@ tables:
       - {label: "Single buffer",                            experiment: ablation, run: p2p-sac__single_buffer}
       - {label: "Immediate removal ($T_d=0$)",              experiment: ablation, run: p2p-sac__immediate_removal}
 
-budget_sweep:                  # Fig. 3 (columns tcpu [ms], n80_mean, n80_std [1e6 steps] + q_hat, K_hat)
+budget_sweep:                  # Fig. 3: REAP wall-clock computation budget (ms) versus N80
   planner_experiment: planner_reference
   points:
-    - {iterations: 2,   experiment: budget, run: p2p-sac__budget_2,   planner_run: planner__budget_2}
-    - {iterations: 5,   experiment: budget, run: p2p-sac__budget_5,   planner_run: planner__budget_5}
-    - {iterations: 10,  experiment: budget, run: p2p-sac__budget_10,  planner_run: planner__budget_10}
-    - {iterations: 20,  experiment: main,   run: p2p-sac,             planner_run: planner__budget_20}
-    - {iterations: 50,  experiment: budget, run: p2p-sac__budget_50,  planner_run: planner__budget_50}
-    - {iterations: 100, experiment: budget, run: p2p-sac__budget_100, planner_run: planner__budget_100}
+    - {budget_ms: 1,  experiment: budget, run: p2p-sac__budget_1ms,  planner_run: planner__budget_1ms}
+    - {budget_ms: 5,  experiment: budget, run: p2p-sac__budget_5ms,  planner_run: planner__budget_5ms}
+
+    # The 10 ms P2P-SAC training reference is reused from main.yaml.
+    # Its previously validated REAP-only result must be linked separately.
+    - {budget_ms: 10, experiment: main,   run: p2p-sac}
+
+    - {budget_ms: 15, experiment: budget, run: p2p-sac__budget_15ms, planner_run: planner__budget_15ms}

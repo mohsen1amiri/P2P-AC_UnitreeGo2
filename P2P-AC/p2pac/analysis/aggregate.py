@@ -179,10 +179,10 @@ def table_to_frame(rows: list[dict]) -> pd.DataFrame:
 def build_budget_sweep(spec: dict, runs: list[Run], threshold: float, total_steps: int) -> pd.DataFrame:
     rows = []
     for item in spec["points"]:
-        it = item["iterations"]
+        budget_ms = item["budget_ms"]
         learn = select(runs, item["experiment"], item["run"])
         n80 = summarize_n80([run_n80(r, threshold) for r in learn], total_steps)
-        row = {"iterations": it, "n_seeds": len(learn), "n80_mean": n80["mean"] / 1e6, "n80_std": n80["std"] / 1e6,
+        row = {"budget_ms": budget_ms, "n_seeds": len(learn), "n80_mean": n80["mean"] / 1e6, "n80_std": n80["std"] / 1e6,
                "n80_n_reached": n80["n_reached"], "n80_censored": n80["n_censored"]}
         if item.get("planner_run"):
             pl = select(runs, item.get("planner_experiment", spec.get("planner_experiment")), item["planner_run"])
@@ -267,9 +267,9 @@ def main(argv=None) -> int:
         df = build_budget_sweep(spec["budget_sweep"], runs, threshold, total)
         df.to_csv(os.path.join(args.out, "budget_sweep.csv"), index=False)
         for _, r in df.iterrows():
-            numbers[f"budget/{int(r['iterations'])}/n80"] = f"{r['n80_mean']:.2f}" if not math.isnan(r["n80_mean"]) else "--"
+            numbers[f"budget/{int(r['budget_ms'])}/n80"] = f"{r['n80_mean']:.2f}" if not math.isnan(r["n80_mean"]) else "--"
             if "q_hat" in r and not math.isnan(r.get("q_hat", math.nan)):
-                numbers[f"budget/{int(r['iterations'])}/q_hat"] = f"{r['q_hat']:.3f}"
+                numbers[f"budget/{int(r['budget_ms'])}/q_hat"] = f"{r['q_hat']:.3f}"
         print(f"[budget] {len(df)} budgets")
 
     write_numbers(numbers, os.path.join(args.out, "numbers.tex"))
