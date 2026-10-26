@@ -61,3 +61,18 @@ budget_sweep:                  # Fig. 3: REAP wall-clock computation budget (ms)
     - {budget_ms: 10, experiment: main,   run: p2p-sac}
 
     - {budget_ms: 15, experiment: budget, run: p2p-sac__budget_15ms, planner_run: planner__budget_15ms}
+
+# Archived REAP-only reference: previously validated on 100 fixed starts.
+# This is an independent planner evaluation, not a new training run.
+archived_references:
+  reap_10ms_100ep:
+    root: /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/verified_references/reap_10ms_100ep
+    evaluation_dir: reeval_reap_only_100_h15_10ms
+    original_run: /home/mohsena/p2pac_smoke_runs/video_diagnostic_4k/p2p-sac/seed_0
+
+    episodes_sha256: ca2e12fe8e7ccde335b5fd7572284696cebbff236c1c3d97bfb87f2629e77182
+    expected_episodes: 100
+    expected_successes: 100
+    expected_starts_seed: 1000005
+    expected_budget_ms: 10.0
+    expected_horizon: 15
