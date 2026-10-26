@@ -39,7 +39,8 @@ class Run:
         return os.path.join(self.root, *parts)
 
     def eval_summary(self) -> pd.DataFrame:
-        p = self.path("eval", "summary.csv")
+        # Paper learning curves and N80 use independent evaluations only.
+        p = self.path("eval", "reeval_curve10", "summary.csv")
         return pd.read_csv(p) if os.path.isfile(p) else pd.DataFrame()
 
     def eval_episodes(self, name: str = "episodes") -> pd.DataFrame:
@@ -54,7 +55,11 @@ class Run:
             return json.load(f)
 
     def final_episodes(self) -> pd.DataFrame:
-        return self.eval_episodes("final_episodes")
+        # REAP-only references are evaluated directly, without a saved policy.
+        if self.config.get("method") == "planner":
+            return self.eval_episodes("final_episodes")
+        p = self.path("eval", "reeval_final100", "episodes.csv")
+        return pd.read_csv(p) if os.path.isfile(p) else pd.DataFrame()
 
     def train_episodes(self) -> pd.DataFrame:
         p = self.path("logs", "episodes.csv")
