@@ -67,6 +67,23 @@ def test_n80_and_censoring():
     assert s["n_reached"] == 2 and s["n_censored"] == 1 and s["mean"] == 250 and s["mean_censored_as_budget"] == 500
 
 
+def test_n80_requires_two_consecutive_evaluations():
+    t = np.array([0, 50_000, 100_000, 150_000, 200_000])
+
+    # An isolated 80% crossing does not count.
+    # The first confirmed crossing is at 150k.
+    success = np.array([0.0, 0.80, 0.70, 0.85, 0.80])
+    assert n_to_threshold(t, success, step_interval=50_000) == 150_000
+
+    # No two consecutive evaluations reach 80%.
+    success = np.array([0.0, 0.85, 0.70, 0.75, 0.80])
+    assert n_to_threshold(t, success, step_interval=50_000) is None
+
+    # Missing an evaluation does not count as consecutive.
+    t_gap = np.array([0, 50_000, 150_000])
+    success_gap = np.array([0.1, 0.9, 0.9])
+    assert n_to_threshold(t_gap, success_gap, step_interval=50_000) is None
+
 def test_wilson_interval():
     lo, hi = wilson_interval(20, 20)
     assert hi == pytest.approx(1.0) and 0.8 < lo < 0.9
