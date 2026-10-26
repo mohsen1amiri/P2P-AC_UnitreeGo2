@@ -48,7 +48,12 @@ def run_n80(run: Run, threshold: float) -> Optional[float]:
     s = run.eval_summary()
     if s.empty:
         return None
-    return n_to_threshold(s["t"].to_numpy(), s["success_rate"].to_numpy(), threshold)
+    return n_to_threshold(
+        s["t"].to_numpy(),
+        s["success_rate"].to_numpy(),
+        threshold,
+        step_interval=50_000,
+    )
 
 
 def run_final_metrics(run: Run) -> dict:

@@ -14,14 +14,30 @@ from typing import Optional, Sequence
 import numpy as np
 
 
-def n_to_threshold(t: np.ndarray, success: np.ndarray, threshold: float = 0.8) -> Optional[float]:
-    """First evaluation step at which the success rate reaches ``threshold`` (None if never)."""
+def n_to_threshold(
+    t: np.ndarray,
+    success: np.ndarray,
+    threshold: float = 0.8,
+    step_interval: Optional[float] = None,
+) -> Optional[float]:
+    """First threshold crossing confirmed at the next evaluation."""
     t = np.asarray(t, dtype=float)
     s = np.asarray(success, dtype=float)
     order = np.argsort(t)
     t, s = t[order], s[order]
-    hit = np.nonzero(s >= threshold - 1e-12)[0]
-    return float(t[hit[0]]) if hit.size else None
+
+    if len(t) < 2:
+        return None
+
+    hits = (s[:-1] >= threshold - 1e-12) & (s[1:] >= threshold - 1e-12)
+
+    if step_interval is not None:
+        hits &= np.isclose(np.diff(t), step_interval, rtol=0, atol=1e-6)
+    else:
+        hits &= np.diff(t) > 0
+
+    indices = np.flatnonzero(hits)
+    return float(t[indices[0]]) if indices.size else None
 
 
 def bootstrap_ci(values: Sequence[float], level: float = 0.95, n_boot: int = 10_000, seed: int = 0) -> tuple[float, float]:
