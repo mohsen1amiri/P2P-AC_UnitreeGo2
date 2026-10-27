@@ -1,0 +1,73 @@
+{
+  "repo": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC",
+  "accounts": {
+    "mohsen": "naiss2025-22-1763-gpu",
+    "sindri": "naiss2026-3-292-gpu",
+    "alireza": "naiss2026-4-635-gpu"
+  },
+  "concurrency_per_gpu": 5,
+  "max_parallel_gpus_per_account": 2,
+  "arrhenius_max_walltime": "3-00:00:00",
+  "workload": {
+    "rl_training": 145,
+    "behavior_cloning": 5,
+    "additional_reap_references": 3,
+    "policy_snapshot_evaluation_jobs": 145,
+    "final_policy_evaluation_jobs": 145
+  },
+  "allocation": {
+    "mohsen": {
+      "account": "naiss2025-22-1763-gpu",
+      "rl_training": 50,
+      "behavior_cloning": 0,
+      "reference": 1,
+      "total_scientific_runs": 51,
+      "snapshot_evaluations": 50,
+      "final_evaluations": 50
+    },
+    "sindri": {
+      "account": "naiss2026-3-292-gpu",
+      "rl_training": 50,
+      "behavior_cloning": 0,
+      "reference": 1,
+      "total_scientific_runs": 51,
+      "snapshot_evaluations": 50,
+      "final_evaluations": 50
+    },
+    "alireza": {
+      "account": "naiss2026-4-635-gpu",
+      "rl_training": 45,
+      "behavior_cloning": 5,
+      "reference": 1,
+      "total_scientific_runs": 51,
+      "snapshot_evaluations": 45,
+      "final_evaluations": 45
+    }
+  },
+  "experiment_counts": {
+    "main": 40,
+    "budget": 15,
+    "ablation": 25,
+    "tp_sweep": 20,
+    "td_sweep": 15,
+    "kappa_sweep": 15,
+    "replay_sweep": 15
+  },
+  "evaluation_protocol": {
+    "snapshots": {
+      "episodes": 10,
+      "starts_seed": 1000003
+    },
+    "final": {
+      "episodes": 100,
+      "starts_seed": 1000004
+    }
+  },
+  "archived_10ms_reference": "REUSED from agreed prior result; no new job",
+  "notes": [
+    "BC jobs depend on all training arrays (planner buffer available after T_p).",
+    "Snapshot and final evaluations require completed training runs.",
+    "Five processes/GPU requested by user; unbenchmarked memory contention.",
+    "Results and logs use Mohsen-owned shared repository path even when charging other GPU accounts."
+  ]
+}

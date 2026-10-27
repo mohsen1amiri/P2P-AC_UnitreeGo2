@@ -1,0 +1,452 @@
+[
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "base",
+    "algo": "td3",
+    "variant": "",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "base",
+    "algo": "td3",
+    "variant": "",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "base",
+    "algo": "td3",
+    "variant": "",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "base",
+    "algo": "td3",
+    "variant": "",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "base",
+    "algo": "td3",
+    "variant": "",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-td3/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-sac/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_1ms",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_1ms",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_1ms",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_1ms",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_1ms",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_1ms/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_planner_phase",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_planner_phase",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_planner_phase",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_planner_phase",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_planner_phase",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_planner_phase/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "single_buffer",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "single_buffer",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "single_buffer",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "single_buffer",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "single_buffer",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__single_buffer/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_50k",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_50k",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_50k",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_50k",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_50k",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_50k/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_10k",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_10k",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_10k",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_10k",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_10k",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_10k/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_1",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_1",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_1",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_1",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_1",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_1/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_0",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_0",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_0",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_1",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_0",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_2",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_0",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_3",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  },
+  {
+    "kind": "eval_final",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_0",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_4",
+    "command": "python -m p2pac.evaluate --run-dir /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless"
+  }
+]

@@ -1,0 +1,502 @@
+[
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "base",
+    "algo": "ddpg",
+    "variant": "",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-ddpg/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method base --algo ddpg --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "base",
+    "algo": "ddpg",
+    "variant": "",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-ddpg/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method base --algo ddpg --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "base",
+    "algo": "ddpg",
+    "variant": "",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-ddpg/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method base --algo ddpg --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "base",
+    "algo": "ddpg",
+    "variant": "",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-ddpg/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method base --algo ddpg --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "base",
+    "algo": "ddpg",
+    "variant": "",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/base-ddpg/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method base --algo ddpg --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "td3",
+    "variant": "",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-td3/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method p2p --algo td3 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "td3",
+    "variant": "",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-td3/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method p2p --algo td3 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "td3",
+    "variant": "",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-td3/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method p2p --algo td3 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "td3",
+    "variant": "",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-td3/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method p2p --algo td3 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "p2p",
+    "algo": "td3",
+    "variant": "",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/p2p-td3/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method p2p --algo td3 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "accel",
+    "algo": "sac",
+    "variant": "",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/accel-sac/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method accel --algo sac --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "accel",
+    "algo": "sac",
+    "variant": "",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/accel-sac/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method accel --algo sac --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "accel",
+    "algo": "sac",
+    "variant": "",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/accel-sac/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method accel --algo sac --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "accel",
+    "algo": "sac",
+    "variant": "",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/accel-sac/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method accel --algo sac --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "main",
+    "method": "accel",
+    "algo": "sac",
+    "variant": "",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/main/accel-sac/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment main --method accel --algo sac --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_5ms",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_5ms/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment budget --method p2p --algo sac --variant budget_5ms --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_5ms",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_5ms/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment budget --method p2p --algo sac --variant budget_5ms --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_5ms",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_5ms/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment budget --method p2p --algo sac --variant budget_5ms --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_5ms",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_5ms/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment budget --method p2p --algo sac --variant budget_5ms --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "budget",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "budget_5ms",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/budget/p2p-sac__budget_5ms/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment budget --method p2p --algo sac --variant budget_5ms --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_imitation",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_imitation/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant no_imitation --kappa0 0.0 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_imitation",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_imitation/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant no_imitation --kappa0 0.0 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_imitation",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_imitation/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant no_imitation --kappa0 0.0 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_imitation",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_imitation/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant no_imitation --kappa0 0.0 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "no_imitation",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__no_imitation/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant no_imitation --kappa0 0.0 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "immediate_removal",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__immediate_removal/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant immediate_removal --t-d 0 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "immediate_removal",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__immediate_removal/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant immediate_removal --t-d 0 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "immediate_removal",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__immediate_removal/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant immediate_removal --t-d 0 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "immediate_removal",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__immediate_removal/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant immediate_removal --t-d 0 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "ablation",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "immediate_removal",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/ablation/p2p-sac__immediate_removal/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment ablation --method p2p --algo sac --variant immediate_removal --t-d 0 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_300k",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_300k/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment tp_sweep --method p2p --algo sac --variant tp_300k --t-p 300000 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_300k",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_300k/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment tp_sweep --method p2p --algo sac --variant tp_300k --t-p 300000 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_300k",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_300k/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment tp_sweep --method p2p --algo sac --variant tp_300k --t-p 300000 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_300k",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_300k/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment tp_sweep --method p2p --algo sac --variant tp_300k --t-p 300000 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "tp_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "tp_300k",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/tp_sweep/p2p-sac__tp_300k/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment tp_sweep --method p2p --algo sac --variant tp_300k --t-p 300000 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_100k",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_100k/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment td_sweep --method p2p --algo sac --variant td_100k --t-d 100000 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_100k",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_100k/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment td_sweep --method p2p --algo sac --variant td_100k --t-d 100000 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_100k",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_100k/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment td_sweep --method p2p --algo sac --variant td_100k --t-d 100000 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_100k",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_100k/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment td_sweep --method p2p --algo sac --variant td_100k --t-d 100000 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "td_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "td_100k",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/td_sweep/p2p-sac__td_100k/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment td_sweep --method p2p --algo sac --variant td_100k --t-d 100000 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_5",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_5/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment kappa_sweep --method p2p --algo sac --variant kappa_5 --kappa0 5.0 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_5",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_5/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment kappa_sweep --method p2p --algo sac --variant kappa_5 --kappa0 5.0 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_5",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_5/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment kappa_sweep --method p2p --algo sac --variant kappa_5 --kappa0 5.0 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_5",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_5/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment kappa_sweep --method p2p --algo sac --variant kappa_5 --kappa0 5.0 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "kappa_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "kappa_5",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/kappa_sweep/p2p-sac__kappa_5/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment kappa_sweep --method p2p --algo sac --variant kappa_5 --kappa0 5.0 --seed 4 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_025",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_025/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment replay_sweep --method p2p --algo sac --variant replay_025 --planner-batch-fraction 0.25 --seed 0 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_025",
+    "seed": 1,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_025/seed_1",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment replay_sweep --method p2p --algo sac --variant replay_025 --planner-batch-fraction 0.25 --seed 1 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_025",
+    "seed": 2,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_025/seed_2",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment replay_sweep --method p2p --algo sac --variant replay_025 --planner-batch-fraction 0.25 --seed 2 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_025",
+    "seed": 3,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_025/seed_3",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment replay_sweep --method p2p --algo sac --variant replay_025 --planner-batch-fraction 0.25 --seed 3 --headless"
+  },
+  {
+    "kind": "training",
+    "experiment": "replay_sweep",
+    "method": "p2p",
+    "algo": "sac",
+    "variant": "replay_025",
+    "seed": 4,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/replay_sweep/p2p-sac__replay_025/seed_4",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 10.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment replay_sweep --method p2p --algo sac --variant replay_025 --planner-batch-fraction 0.25 --seed 4 --headless"
+  }
+]

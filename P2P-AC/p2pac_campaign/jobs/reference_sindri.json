@@ -1,0 +1,12 @@
+[
+  {
+    "kind": "reference",
+    "experiment": "planner_reference",
+    "method": "planner",
+    "algo": null,
+    "variant": "budget_5ms",
+    "seed": 0,
+    "run_dir": "/nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs/planner_reference/planner__budget_5ms/seed_0",
+    "command": "python -m p2pac.train --backend isaac --output-root /nobackup/proj/disk/naiss2024-22-1645/personal/mohsena/P2P-AC_UnitreeGo2/P2P-AC/runs --total-steps 5000000 --max-episode-steps 800 --eval-mode snapshot --eval-every 50000 --eval-episodes 10 --eval-final-episodes 100 --reap-time-budget-ms 5.0 --ppo-n-steps 2000 --checkpoint-every 250000 --gamma 0.99 --experiment planner_reference --eval-seed 1000004 --method planner --variant budget_5ms --seed 0 --headless"
+  }
+]
