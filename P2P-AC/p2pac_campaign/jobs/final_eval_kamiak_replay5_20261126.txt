@@ -1,0 +1,5 @@
+python -m p2pac.evaluate --run-dir /data/lab/hosseinzadeh/personal/mohsen.amiri/P2P-AC/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_0 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless
+python -m p2pac.evaluate --run-dir /data/lab/hosseinzadeh/personal/mohsen.amiri/P2P-AC/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_1 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless
+python -m p2pac.evaluate --run-dir /data/lab/hosseinzadeh/personal/mohsen.amiri/P2P-AC/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_2 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless
+python -m p2pac.evaluate --run-dir /data/lab/hosseinzadeh/personal/mohsen.amiri/P2P-AC/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_3 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless
+python -m p2pac.evaluate --run-dir /data/lab/hosseinzadeh/personal/mohsen.amiri/P2P-AC/P2P-AC/runs/replay_sweep/p2p-sac__replay_0/seed_4 --what final --episodes 100 --starts-seed 1000004 --tag paper_final100 --headless
