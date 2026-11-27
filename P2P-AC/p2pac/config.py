@@ -167,6 +167,10 @@ OPTIONS: list[Option] = [
     _O("t_d", 50_000, "P2P-AC", "Transition length: the imitation weight decays linearly to 0 between T_p and T_r = T_p + T_d.",
        int, symbol="T_d"),
     _O("kappa0", 10.0, "P2P-AC", "Initial imitation weight (constant until T_p).", float, paper="Sec. VI-B", symbol="kappa_0"),
+    _O("advantage_gate", False, "P2P-AC",
+       "Persistent advantage-gated SAC imitation.", "bool"),
+    _O("gate_tau", 1.0, "P2P-AC",
+       "Soft-advantage sigmoid temperature.", float),
     _O("execute_planner", True, "P2P-AC", "The planner chooses the executed actions for t < T_p "
        "(--no-execute-planner = ablation 'without planner phase').", "bool"),
     _O("imitation_space", "logit", "P2P-AC", "Imitation loss. logit: Eq. (19), in the pre-tanh space (paper). action: on the "
@@ -367,6 +371,13 @@ def resolve(ns: argparse.Namespace) -> argparse.Namespace:
 def validate(c: argparse.Namespace) -> None:
     """Reject inconsistent settings (fail fast, before any simulator is launched)."""
     errors = []
+    if c.advantage_gate:
+        if c.method != "p2p" or c.algo != "sac":
+            errors.append("Advantage gate requires P2P-SAC")
+        if c.kappa0 <= 0:
+            errors.append("Advantage gate requires positive kappa0")
+        if not (0 < c.gate_tau < float("inf")):
+            errors.append("gate_tau must be finite and positive")
     if c.method in ("p2p", "accel", "planner") and c.planner == "none":
         errors.append(f"method={c.method} requires a planner")
     if c.method in ("p2p", "base", "accel") and c.algo is None:

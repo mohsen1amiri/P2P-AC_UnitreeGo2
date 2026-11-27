@@ -34,7 +34,12 @@ class P2PConfig:
     logit_clip_eps: float = 1e-4       # epsilon_c of Eq. (18)
     label_noise_std: float = 0.0       # Gaussian noise on the imitation target, normalised action units (Accel. SAC)
 
+    advantage_gate: bool = False
+    gate_tau: float = 1.0
+
     def __post_init__(self) -> None:
+        if not (0 < self.gate_tau < float("inf")):
+            raise ValueError("gate_tau must be finite and positive")
         if self.t_p < 0 or self.t_d < 0:
             raise ValueError("t_p and t_d must be non-negative")
         if self.imitation_space not in IMITATION_SPACES:
@@ -57,6 +62,8 @@ class P2PConfig:
 
     def kappa(self, t: int) -> float:
         """Imitation weight kappa_t of Eq. (17)."""
+        if self.advantage_gate:
+            return self.kappa0
         if t < self.t_p:
             return self.kappa0
         if t < self.t_r:

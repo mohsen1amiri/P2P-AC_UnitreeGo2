@@ -135,7 +135,7 @@ class PlannerToPolicyMixin:
         if self.p2p.queries_planner(t):
             if self._planners is None:
                 raise RuntimeError("planner required at t=%d but not attached" % t)
-            if t >= self.p2p.t_r:
+            if t >= self.p2p.t_r and not self.p2p.advantage_gate:
                 self.n_planner_queries_after_removal += 1
             obs = self._last_obs  # type: ignore[attr-defined]
             u_dag = np.zeros((n_envs, p), dtype=np.float64)
@@ -305,9 +305,49 @@ class P2PSAC(PlannerToPolicyMixin, SAC):
             if kappa > 0.0 and isinstance(replay_data, AnnotatedSamples) and float(replay_data.planner_mask.sum()) > 0:
                 pre, _, _ = self.actor.get_action_dist_params(replay_data.observations)   # xi_theta(s)
                 ell = self._imitation_loss(replay_data, pre, actions_pi)
-                imitation = (replay_data.planner_mask * ell).mean()
-                actor_loss = actor_loss + kappa * imitation
                 mask = replay_data.planner_mask
+                gate = th.ones_like(mask)
+
+                if self.p2p.advantage_gate:
+                    with th.no_grad():
+                        if t >= self.p2p.t_r:
+                            planner_q = th.cat(
+                                self.critic(
+                                    replay_data.observations,
+                                    replay_data.planner_actions
+                                ), dim=1
+                            ).min(dim=1, keepdim=True).values
+
+                            soft_value = (
+                                min_qf_pi.detach()
+                                - ent_coef.detach() * log_prob.detach()
+                            )
+
+                            advantage = planner_q - soft_value
+
+                            gate = th.sigmoid(
+                                advantage / self.p2p.gate_tau
+                            )
+
+                            extra["planner_advantage_mean"] = float(
+                                (advantage * mask).sum().item()
+                                / max(mask.sum().item(), 1.0)
+                            )
+
+                        extra["advantage_gate_mean"] = float(
+                            (gate * mask).sum().item()
+                            / max(mask.sum().item(), 1.0)
+                        )
+
+                        extra["effective_imitation_weight"] = (
+                            kappa * extra["advantage_gate_mean"]
+                        )
+
+                    imitation = (mask * gate * ell).mean()
+                else:
+                    imitation = (mask * ell).mean()
+
+                actor_loss = actor_loss + kappa * imitation
                 extra["imitation_loss"] = float(imitation.item())
                 extra["imitation_loss_on_labelled"] = float((ell * mask).sum().item() / max(float(mask.sum().item()), 1.0))
                 extra["logit_abs_mean"] = float(pre.detach().abs().mean().item())

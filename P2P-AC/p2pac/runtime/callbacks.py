@@ -267,7 +267,11 @@ class RunCallback(BaseCallback):
         if not self.state["tr_done"] and t >= p.t_r:
             self.state["tr_done"] = True
             after = int(getattr(self.model, "n_planner_queries_after_removal", 0))
-            self.run.event("planner_removed", step=t, kappa=p.kappa(t), queries_after_removal=after,
+            event_name = (
+                "advantage_gate_activated"
+                if p.advantage_gate else "planner_removed"
+            )
+            self.run.event(event_name, step=t, kappa=p.kappa(t), queries_after_removal=after,
                            total_planner_queries=int(getattr(self.model, "n_planner_queries", 0)))
             if after != 0:
                 self.run.event("warning", step=t, message="planner queried after T_r (Proposition 3 violated)")

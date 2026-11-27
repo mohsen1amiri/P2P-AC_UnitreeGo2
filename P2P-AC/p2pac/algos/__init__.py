@@ -29,6 +29,8 @@ def p2p_config_from_args(args) -> P2PConfig:
         imitation_space=args.imitation_space,
         logit_clip_eps=args.logit_clip_eps,
         label_noise_std=label_noise,
+        advantage_gate=getattr(args, "advantage_gate", False),
+        gate_tau=getattr(args, "gate_tau", 1.0),
     )
 
 
